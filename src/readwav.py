@@ -41,8 +41,8 @@ def readwav(audiofile):
         if(channels==2):
             audio_StringWav = np.ndarray(shape=(nframes,channels),\
                                          dtype=np.int16, buffer=audio_dataForWav) 
-            sio.savemat('audio_StringWavStereo.mat', {'audio_StringWavStereo':\
-                                                       audio_StringWav})
+#            sio.savemat('audio_StringWavStereo.mat', {'audio_StringWavStereo':\
+#                                                       audio_StringWav})
              # output same as MATLAB code, # depends on OS byte format 
              #use either of the following depending which is similar to string format
 #            audio_bytearray = np.ndarray(shape=(nframes,channels),dtype='<i2', buffer=audio_dataForWav) 
@@ -56,8 +56,8 @@ def readwav(audiofile):
             #which is preferred as this does not work if audio has 1 channel
             audio_StringWav = np.ndarray(shape=(nframes,),dtype=np.int16, \
                                          buffer=audio_dataForWav) 
-            sio.savemat('audio_StringWavMono.mat', {'audio_StringWavMono':\
-                                                       audio_StringWav})
+#            sio.savemat('audio_StringWavMono.mat', {'audio_StringWavMono':\
+#                                                       audio_StringWav})
             # output same as MATLAB code, # depends on OS byte format 
              #use either of the following depending which is similar to string format
 #            audio_bytearray = np.ndarray(shape=(nframes,),dtype='<i2', buffer=audio_dataForWav)           

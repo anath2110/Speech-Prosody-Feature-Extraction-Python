@@ -22,7 +22,7 @@ import amfm_decompy.pYAAPT_MATLABverForWav as pYAAPT
 
 
 
-def  lookOrComputePitchWav(directory,audio,side,signal):    
+def  lookOrComputePitchWav(pathToSavePitchCache,directory,audio,side,signal):    
 
 #Savekey encodes the audio filename and the track.
 #If a cached pitch file exists, then use that data 
@@ -31,7 +31,7 @@ def  lookOrComputePitchWav(directory,audio,side,signal):
 
     
     savekey=audio + side
-    pitchCacheDir = directory + 'pitchCachePython'
+    pitchCacheDir = pathToSavePitchCache + 'pitchCachePython'
     
     if not os.path.exists(pitchCacheDir):
         os.makedirs(pitchCacheDir)  

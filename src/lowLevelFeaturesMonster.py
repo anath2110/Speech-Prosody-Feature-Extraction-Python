@@ -5,6 +5,13 @@ Created on Tue Jun 25 13:07:38 2019
 @author: Anindita Nath
 3M| M*Modal
 Pittsburgh, PA
+
+Translated to Python and modified from the original in MATLAB,
+makeTrackMonsterSimplified.m by Gerardo Cervantes.
+
+Reference:
+Ward et al., "TURN-TAKING PREDICTIONS ACROSS LANGUAGES AND GENRES USING AN LSTM
+RECURRENT NEURAL NETWORK", IEEE Workshop on Spoken Language Technology (SLT),2018
 """
 """
 Simplified version of makeTrackMonster.py
@@ -25,7 +32,7 @@ from lookOrComputePitchWav import lookOrComputePitchWav
 from cepstralFlux import cepstralFlux
 from speakingFrames import speakingFrames
 
-def lowLevelFeaturesMonster(trackspec, trackletter):
+def lowLevelFeaturesMonster(pathToSavePitchCache,trackspec, trackletter):
      msPerFrame = 10
      signal = wavstruct.SignalObj(trackspec.path)
      rate=signal.fs
@@ -38,7 +45,7 @@ def lowLevelFeaturesMonster(trackspec, trackletter):
      elif(signal.channels==1):
              signalOneTrack = signal.data
          
-     praw, pCenters = lookOrComputePitchWav(trackspec.directory,trackspec.filename, trackletter,signal)
+     praw, pCenters = lookOrComputePitchWav(pathToSavePitchCache,trackspec.directory,trackspec.filename, trackletter,signal)
      energy = computeLogEnergy(signalOneTrack, samplesPerFrame)
      cepstral = cepstralFlux(signalOneTrack, rate, energy)
      pitch=praw
